@@ -15,7 +15,7 @@ gem 'pg'
 gem 'rolify'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
-gem 'thin'
+gem 'unicorn'
 gem 'friendly_id'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
