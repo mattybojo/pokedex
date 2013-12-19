@@ -18,6 +18,7 @@ gem 'therubyracer', :platform=>:ruby
 gem 'unicorn'
 gem 'friendly_id'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'foreman'
 
 group :development do
   gem 'better_errors'
@@ -49,4 +50,8 @@ group :test do
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
   gem 'launchy'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
