@@ -1,0 +1,62 @@
+name,description
+Route 1,Route between Pallet Town and Viridian City
+Route 2,Route between Viridian City and Pewter Town
+Route 3,Route between Pewter Town and Mt Moon
+Route 4,Route between Mt Moon and Cerulean City
+Route 5,Route between Cerulean City and Saffron City
+Route 6,Route between Saffron City and Vermilion City
+Route 7,Route between Saffron City and Celadon City
+Route 8,Route between Saffron City and Lavender Town
+Route 9,Route between Cerulean City and Route 10
+Route 10,Route between Route 9 and Lavender Town
+Route 11,Route between Vermilion City and Route 12
+Route 12,Route between Lavender Town and Route 13
+Route 13,Route between Route 12 and Route 14
+Route 14,Route between Route 13 and Route 15
+Route 15,Route between Route 14 and Fuchsia City
+Route 19,Route between Fuchsia City and Route 20
+Route 20,Route between Route 19 and Cinnabar Island
+Route 21,Route between Cinnabar Island and Pallet Town
+Route 22,Route between Viridian City and Indigo Plateau
+Route 24,Route between Cerulean City and Route 25
+Route 25,Route connected to Route 24
+Route 26,Route between Route 27 and Pokemon League Reception Gate
+Route 27,Route between Route 26 and New Bark Town
+Route 28,Route between Pokemon League Reception Gate and Mt Silver
+Route 29,Route between New Bark City and Cherrygrove City
+Route 30,Route between Cherrygrove City and Route 31
+Route 31,Route between Route 30 and Violet City
+Route 32,Route between Violet City and Union Cave
+Route 33,Route between Union Cave and Azalea Town
+Route 34,Route between Ilex Forest and Goldenrod City
+Route 35,Route between Goldenrod City and National Park
+Route 36,Route between National Park and Violet City
+Route 37,Route between National Park and Ecruteak City
+Route 38,Route between Ecruteak City and Route 39
+Route 39,Route between Route 38 and Olivine City
+Route 40,Route between Olivine City and Route 41
+Route 41,Route between Route 30 and Cianwood City
+Route 42,Route between Ecruteak City and Mahogany Town
+Route 43,Route between Mahogany Town and Lake of Rage
+Route 44,Route between Mahogany Town and Blackthorn City
+Route 45,Route between Blackthorn City and Route 46
+Route 46,Route between Route 45 and Route 29
+Mt Silver
+Sprout Tower
+Ruins of Alph
+Union Cave
+Ilex Forest
+Ice Path
+Olivine City
+Burned Tower
+National Park
+Mt Mortar
+Dark Cave
+Whirl Islands
+Tin Tower
+Mt Moon
+Cycling Road
+Rock Tunnel
+Victory Road
+Diglett's Cave
+Lake of Rage

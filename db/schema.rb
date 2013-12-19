@@ -11,10 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219065945) do
+ActiveRecord::Schema.define(version: 20131219090922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: true do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "description"
+  end
+
+  create_table "moves", force: true do |t|
+    t.string  "name"
+    t.string  "move_type"
+    t.integer "pp"
+    t.integer "power"
+    t.string  "description"
+    t.string  "slug"
+    t.integer "accuracy"
+  end
+
+  add_index "moves", ["slug"], name: "index_moves_on_slug", using: :btree
+
+  create_table "pokemon", force: true do |t|
+    t.string "name"
+    t.string "type1"
+    t.string "type2"
+    t.string "slug"
+  end
+
+  add_index "pokemon", ["slug"], name: "index_pokemon_on_slug", using: :btree
+
+  create_table "pokemon_locations", force: true do |t|
+    t.integer "pokemon_id"
+    t.integer "location_id"
+    t.string  "time_of_day"
+    t.string  "notes"
+  end
+
+  create_table "pokemon_moves", force: true do |t|
+    t.integer "level"
+    t.integer "pokemon_id"
+    t.integer "move_id"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

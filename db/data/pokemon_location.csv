@@ -1,0 +1,388 @@
+location_id, pokemon_id, time_of_day (MAE), notes
+route-1,pidgey,MA
+route-1,sentret,MA
+route-1,furret,MA
+route-1,rattata,MAE
+route-1,hoothoot,E
+route-2,pikachu,MAE
+route-2,pidgey,MA
+route-2,pidgeotto,MA
+route-2,hoothoot,E
+route-2,noctowl,E
+route-2,caterpie,MA,Gold only
+route-2,metapod,MA,Gold only
+route-2,butterfree,MA,Gold only
+route-2,weedle,MA,Silver only
+route-2,kakuna,MA,Silver only
+route-2,beedrill,MA,Silver only
+route-2,spinarak,E,Gold exclusive
+route-2,ariados,E,Gold exclusive
+route-2,ledyba,M,Silver exclusive
+route-2,ledian,M,Silver exclusive
+route-3,spearow,MA
+route-3,rattata,MAE
+route-3,jigglypuff,MAE
+route-3,zubat,E
+route-3,ekans,MAE,Silver only
+route-3,arbok,MAE,Silver only
+route-4,spearow,MA
+route-4,rattata,MAE
+route-4,jigglypuff,MAE
+route-4,zubat,E
+route-4,ekans,MAE,Silver only
+route-4,arbok,MAE,Silver only
+route-5,bellsprout,MAE
+route-5,abra,MAE
+route-5,magnemite,MAE
+route-5,meowth,MAE,Silver only
+route-5,pidgey,MA
+route-5,oddish,E
+route-5,gloom,E
+route-6,bellsprout,MAE
+route-6,abra,MAE
+route-6,magnemite,MAE
+route-6,meowth,MAE,Silver only
+route-6,pidgey,MA
+route-6,oddish,E
+route-7,spearow,MA
+route-7,rattata,MAE
+route-7,growlithe,MAE,Gold exclusive
+route-7,vulpix,MAE,Silver exclusive
+route-7,raticate,MAE
+route-7,houndour,E
+route-7,murkrow,E
+route-8,abra,MAE
+route-8,kadabra,MAE
+route-8,growlithe,MAE,Gold exclusive
+route-8,vulpix,MAE,Silver exclusive
+route-8,pidgeotto,MA
+route-8,haunter,E
+route-8,noctowl,E
+route-9,rattata,MAE
+route-9,raticate,MAE
+route-9,mankey,Gold exclusive
+route-9,primeape,MAE,Gold exclusive
+route-9,spearow,MA
+route-9,fearow,MA
+route-10,spearow,MA
+route-10,fearow,MA
+route-10,quagsire,ME
+route-10,raticate,MAE
+route-10,voltorb,MAE
+route-10,electabuzz,MAE
+route-11,rattata,MAE
+route-11,magnemite,MAE
+route-11,drowzee,MAE
+route-11,hypno,MAE
+route-11,snorlax,,Event battle
+route-12,nidorina,MAE
+route-12,nidorina,MAE
+route-12,chansey,MAE,Rare
+route-12,pidgeotto,MA
+route-12,hoppip,MA
+route-12,quagsire,MAE,ME on land; E in water
+route-12,noctowl,E
+route-12,tentacool,MAE,Surfing
+route-12,tentacruel,MAE,Surfing
+route-13,nidorina,MAE
+route-13,nidorina,MAE
+route-13,chansey,MAE,Rare
+route-13,pidgeotto,MA
+route-13,hoppip,MA
+route-13,quagsire,MAE,ME on land; E in water
+route-13,noctowl,E
+route-13,tentacool,MAE,Surfing
+route-13,tentacruel,MAE,Surfing
+route-14,nidorina,MAE
+route-14,nidorina,MAE
+route-14,chansey,MAE,Rare
+route-14,pidgeotto,MA
+route-14,hoppip,MA
+route-14,skiploom,A
+route-14,quagsire,MAE,ME on land; E in water
+route-14,noctowl,E
+route-14,tentacool,MAE,Surfing
+route-14,tentacruel,MAE,Surfing
+route-14,aerodactyl,,Trade Chansey
+route-15,nidorina,MAE
+route-15,nidorina,MAE
+route-15,chansey,MAE,Rare
+route-15,pidgeotto,MA
+route-15,hoppip,MA
+route-15,quagsire,MAE,ME on land; E in water
+route-15,noctowl,E
+route-15,tentacool,MAE,Surfing
+route-15,tentacruel,MAE,Surfing
+route-19,tangela,MAE
+route-19,mr-mime,MAE
+route-19,tentacool,MAE,Surfing
+route-19,tentacruel,MAE,Surfing
+route-20,tangela,MAE
+route-20,mr-mime,MAE
+route-20,tentacool,MAE,Surfing
+route-20,tentacruel,MAE,Surfing
+route-21,tangela,MAE
+route-21,mr-mime,MAE
+route-21,tentacool,MAE,Surfing
+route-21,tentacruel,MAE,Surfing
+route-22,rattata,MAE
+route-22,ponyta,MAE
+route-22,spearow,MA
+route-22,fearow,MA
+route-22,doduo,MA
+route-24,bellsprout,MAE
+route-24,weepinbell,MAE
+route-24,abra,MAE
+route-24,pidgey,MA
+route-24,pidgeotto,MA
+route-24,sunkern,A
+route-24,venonat,ME
+route-24,venomoth,E
+route-24,oddish,E
+route-25,bellsprout,MAE
+route-25,weepinbell,MAE
+route-25,abra,MAE
+route-25,pidgey,MA
+route-25,pidgeotto,MA
+route-25,sunkern,A
+route-25,venonat,ME
+route-25,venomoth,E
+route-25,oddish,E
+route-26,doduo,MA
+route-26,dodrio,MA
+route-26,raticate,MAE
+route-26,sandslash,MAE,Gold only
+route-26,arbok,MAE,Silver only
+route-26,ponyta,MAE
+route-26,quagsire,ME
+route-26,slowpoke,MAE,Waterfall area only
+route-26,golbat,MAE,Waterfall area only
+route-27,doduo,MA
+route-27,dodrio,MA
+route-27,raticate,MAE
+route-27,sandslash,MAE,Gold only
+route-27,arbok,MAE,Silver only
+route-27,ponyta,MAE
+route-27,quagsire,ME
+route-27,slowpoke,MAE,Waterfall area only
+route-27,golbat,MAE,Waterfall area only
+route-28,ponyta,MAE
+route-28,rapidash,MAE
+route-28,tangela,MAE
+route-28,ursaring,MAE,Gold exclusive
+route-28,donphan,MAE,Silver exclusive
+route-28,doduo,MA
+route-28,dodrio,MA
+route-28,sneasel,E
+route-29,sentret,MA
+route-29,pidgey,MA
+route-29,rattata,MAE
+route-29,hoothoot,E
+route-30,caterpie,MA,Gold only
+route-30,metapod,MA,Gold only
+route-30,spinarak,E,Gold exclusive
+route-30,weedle,MA,Silver only
+route-30,kakuna,MA,Silver only
+route-30,ledyba,M,Silver exclusive
+route-30,pidgey,MA
+route-30,rattata,MAE
+route-30,hoothoot,E
+route-31,caterpie,MA,Gold only
+route-31,metapod,MA,Gold only
+route-31,spinarak,E,Gold exclusive
+route-31,weedle,MA,Silver only
+route-31,kakuna,MA,Silver only
+route-31,ledyba,M,Silver exclusive
+route-31,pidgey,MA
+route-31,rattata,MAE
+route-31,hoothoot,E
+route-31,bellsprout,AE,Trade for Onix in Violet City
+route-32,hoppip,MA
+route-32,rattata,MAE
+route-32,bellsprout,MAE
+route-32,mareep,MAE
+route-32,wooper,ME
+route-32,ekans,MAE,Silver only
+route-33,rattata,MAE
+route-33,spearow,MA
+route-33,hoppip,MA
+route-33,zubat,ME
+route-33,ekans,MAE,Silver only
+route-34,rattata,MAE
+route-34,abra,MAE
+route-34,drowzee,MAE
+route-34,ditto,MAE
+route-35,abra,MAE
+route-35,drowzee,MAE
+route-35,ditto,MAE
+route-35,nidoran-f,MAE
+route-35,nidoran-m,MAE
+route-35,pidgey,MA
+route-35,hoothoot,E
+route-35,yanma,MAE,Swarms
+route-36,pidgey,MA
+route-36,pidgeotto,A,Slightly rare
+route-36,growlithe,MAE,Gold exclusive
+route-36,vulpix,MAE,Silver exclusive
+route-36,stantler,MAE
+route-36,nidoran-m,MAE
+route-36,nidoran-f,MAE
+route-36,hoothoot,E
+route-36,sudowoodo,,Event Pokemon
+route-37,pidgey,MA
+route-37,pidgeotto,A,Slightly rare
+route-37,growlithe,MAE,Gold exclusive
+route-37,spinarak,E,Gold exclusive
+route-37,vulpix,MAE,Silver exclusive
+route-37,ledyba,M
+route-37,stantler,MAE
+route-37,hoothoot,E
+route-38,rattata,MAE
+route-38,raticate,MAE
+route-38,magnemite,MAE,5% chance it has Metal Coat
+route-38,meowth,ME,Silver exclusive
+route-38,tauros,MAE
+route-38,miltank,MAE
+route-38,farfetchd,MA
+route-38,snubbull,MAE,Swarms
+route-39,rattata,MAE
+route-39,raticate,MAE
+route-39,magnemite,MAE,5% chance it has Metal Coat
+route-39,meowth,MAE,Silver exclusive
+route-39,tauros,MAE
+route-39,miltank,MAE
+route-39,farfetchd,MA
+route-40,tentacool,MAE,Surfing
+route-40,tentacruel,MAE,Surfing
+route-41,tentacool,MAE,Surfing
+route-41,tentacruel,MAE,Surfing
+route-41,mantine,MAE,Gold exclusive
+route-42,mareep,MAE
+route-42,flaaffy,MAE
+route-42,mankey,MAE,Gold exclusive
+route-42,spearow,MA
+route-42,zubat,E
+route-43,venonat,MAE
+route-43,mareep,MAE
+route-43,flaaffy,MAE
+route-43,girafarig,MAE
+route-43,pidgeotto,MA
+route-43,noctowl,E
+route-44,bellsprout,MAE
+route-44,weepinbell,MAE
+route-44,lickitung,MAE
+route-44,tangela,MAE,Tends to flee
+route-45,geodude,MAE
+route-45,graveler,MAE
+route-45,gligar,MAE,Gold exclusive
+route-45,skarmory,MAE,Silver exclusive
+route-45,teddiursa,MAE,Gold exclusive; flees
+route-45,phanpy,MAE,Silver exclusive; flees
+route-46,jigglypuff,MA,Somewhat rare
+route-46,spearow,MA
+route-46,geodude,MAE
+route-46,rattata,MAE
+mt-silver,onix,MAE,First room only
+mt-silver,graveler,MAE,First room only
+mt-silver,golbat,MAE
+mt-silver,larvitar,MAE
+mt-silver,ursaring,MAE
+mt-silver,donphan,MAE
+mt-silver,golduck,MAE,Second room only
+mt-silver,quagsire,MAE,Second room only
+mt-silver,misdreavus,E,Second room only
+sprout-tower,rattata,MAE
+sprout-tower,gastly,E
+ruins-of-alph,unown,MAE
+union-cave,geodude,MAE
+union-cave,onix,MAE
+union-cave,rattata,MAE
+union-cave,zubat,MAE
+union-cave,wooper,MAE
+union-cave,sandshrew,Gold only
+ilex-forest,caterpie,MA,Gold only
+ilex-forest,metapod,MA,Gold only
+ilex-forest,weedle,MA,Silver only
+ilex-forest,kakuna,MA,Silver only
+ilex-forest,zubat,ME
+ilex-forest,paras,MAE
+ilex-forest,oddish,MAE
+ice-path,zubat,ME
+ice-path,golbat,MAE
+ice-path,jynx,MAE
+ice-path,swinub,MAE
+ice-path,delibird,MAE,Silver exclusive; flees
+burned-tower,rattata,MAE
+burned-tower,zubat,ME
+burned-tower,koffing,MAE
+burned-tower,raticate,MAE,1F only
+burned-tower,magmar,MAE,B1 only
+national-park,caterpie,MA,Gold only
+national-park,weedle,MA,Silver only
+national-park,metapod,MA,Gold only
+national-park,kakuna,MA,Silver only
+national-park,pidgey,MA
+national-park,sunkern,A
+national-park,hoothoot,E
+mt-mortar,zubat,MAE
+mt-mortar,rattata,MAE
+mt-mortar,machop,MAE
+mt-mortar,geodude,MAE
+mt-mortar,machoke,MAE,Second floor only
+mt-mortar,graveler,MAE,Second floor only
+mt-mortar,raticate,MAE,Second floor only
+mt-mortar,goldeen,MAE,Surfing
+mt-mortar,seaking,Surfing
+mt-mortar,marill,MAE,Swarms
+mt-mortar,tyrogue,Given after trainer fight
+dark-cave,zubat,MAE
+dark-cave,golbat,MAE
+dark-cave,geodude,MAE
+dark-cave,graveler,MAE
+dark-cave,wobbuffet,MAE,Blackthorn entrance
+dark-cave,dunsparce,MAE,Route 31 entrance
+whirl-islands,krabby,MAE
+whirl-islands,seel,MAE
+whirl-islands,zubat,MAE
+whirl-islands,golbat,MAE
+whirl-islands,horsea,MAE,In water only
+whirl-islands,seadra,MAE,In water only
+whirl-islands,tentacool,MAE,In water only
+whirl-islands,tentacruel,MAE,In water only
+whirl-islands,lugia,,Event battle
+tin-tower,rattata,MAE
+tin-tower,gastly,E
+tin-tower,ho-oh,,Event battle
+mt-moon,paras,MAE
+mt-moon,geodude,MAE
+mt-moon,clefairy,MAE
+mt-moon,zubat,MAE
+mt-moon,sandshrew,MAE,Gold only
+mt-moon,sandslash,MAE,Gold only
+cycling-road,fearow,A
+cycling-road,grimer,MAE
+cycling-road,muk,MAE
+cycling-road,slugma,MAE
+cycling-road,murkrow,E
+rock-tunnel,geodude,MAE
+rock-tunnel,machop,MAE
+rock-tunnel,machoke,MAE
+rock-tunnel,zubat,MAE
+rock-tunnel,onix,MAE
+rock-tunnel,kangaskhan,MAE
+rock-tunnel,cubone,MAE,May hold Thick Club
+rock-tunnel,marowak,MAE,May hold Thick Club
+victory-road,onix,MAE
+victory-road,graveler,MAE
+victory-road,golbat,MAE
+victory-road,rhyhorn,MAE
+victory-road,ursaring,MAE,Gold exclusive
+victory-road,donphan,MAE,Silver exclusive
+digletts-cave,diglett,MAE
+digletts-cave,dugtrio,MAE
+lake-of-rage,venonat,MAE
+lake-of-rage,mareep,MAE
+lake-of-rage,flaaffy,MAE
+lake-of-rage,girafarig,MAE
+lake-of-rage,pidgeotto,MA
+lake-of-rage,noctowl,E

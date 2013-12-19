@@ -1,0 +1,21 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatable display">
+  <thead class="sorting">
+  <tr>
+    <th>Number</th>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @pokemons.each do |pokemon| %>
+      <tr>
+        <td><%= pokemon.id.to_s.rjust(3, '0') %></td>
+        <td><img height=35 width=35 src="http://img.pokemondb.net/artwork/<%= "#{pokemon.slug}" %>.jpg"><%= link_to pokemon.name, pokemon %></td>
+        <td><%= pokemon.type2.nil? ? pokemon.type1 : pokemon.type1 + "/" + pokemon.type2 %></td>
+      </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>

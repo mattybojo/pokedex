@@ -12,4 +12,15 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def get_location_id(loc)
+    Location.find_by_slug(loc).id
+  end
+
+  def get_pokemon_id(poke)
+    Pokemon.find_by_slug(poke).id
+  end
+
+  def get_move_id(mov)
+    Move.find_by_slug(mov).id
+  end
 end

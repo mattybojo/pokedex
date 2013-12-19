@@ -16,6 +16,9 @@ gem 'rolify'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 gem 'thin'
+gem 'friendly_id'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -29,11 +32,17 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'annotate', :git => "https://github.com/ctran/annotate_models.git", :require => false
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-stack_explorer'
+  gem 'pry-remote'
 end
+
 group :test do
   gem 'capybara'
   gem 'cucumber-rails', :require=>false

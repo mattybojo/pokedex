@@ -1,0 +1,27 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatable display">
+  <thead class="sorting">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Power</th>
+    <th>Accuracy</th>
+    <th>Power Points (PP)</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @moves.each do |move| %>
+      <tr>
+        <td><%= link_to move.name, move %></td>
+        <td><%= move.move_type %></td>
+        <td><%= move.power %></td>
+        <td><%= move.accuracy %></td>
+        <td><%= move.pp %></td>
+        <td><%= move.description %></td>
+      </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>

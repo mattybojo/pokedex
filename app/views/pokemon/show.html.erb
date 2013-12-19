@@ -1,0 +1,56 @@
+<img align="center" src="http://img.pokemondb.net/artwork/<%= "#{@pokemon.slug}" %>.jpg">
+<h1><%= @pokemon.name %></h1>
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
+  <thead class="sorting">
+  <tr>
+    <th>Locations</th>
+    <th>Morning</th>
+    <th>Afternoon</th>
+    <th>Evening</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @poke_locations.each do |loc| %>
+      <tr>
+        <td><%= link_to Location.where("id = ?", loc.location_id).first.name, location_path(loc.location.slug) %></td>
+        <% if !loc.time_of_day.nil? %>
+            <td><%= 'x' unless !loc.time_of_day.include? 'M' %></td>
+            <td><%= 'x' unless !loc.time_of_day.include? 'A' %></td>
+            <td><%= 'x' unless !loc.time_of_day.include? 'E' %></td>
+        <% else %>
+            <td></td>
+            <td></td>
+            <td></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
+  <thead class="sorting">
+  <tr>
+    <th>Level</th>
+    <th>Move</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @poke_moves.each do |mov| %>
+      <tr>
+        <td><%= mov.level %></td>
+        <td><%= link_to Move.where("id = ?", mov.move_id).first.name, move_path(mov.move_id) %></td>
+        <td><%= mov.move.move_type %></td>
+        <td><%= mov.move.description %></td>
+      </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
