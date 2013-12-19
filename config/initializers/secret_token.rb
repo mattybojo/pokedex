@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Pokedex::Application.config.secret_key_base = 'bdbd49af52665715973fcccbd748e753f161d8097897565faa64b50790ac60a78dad215d65835a40dffb55b1cac50cd332c54db7bce72d95a930d74c8827d2b3'
+Pokedex::Application.config.secret_key_base = 'c12716c9c555bc4d5fdb38f0500ba472e8a816c31b88a947238a92977a22a4cfab6bbae5c647e344104daa64f349f86532ef74c53a9c3b99e542a7643f253a99'
