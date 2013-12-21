@@ -15,8 +15,9 @@ class PokemonController < ApplicationController
 
   def show
     @pokemon = Pokemon.friendly.find(params[:id])
-    @poke_locations = PokemonLocation.order('id ASC').find_all_by_pokemon_id(get_pokemon_id(params[:id]))
-    @poke_moves = PokemonMove.order('id ASC').find_all_by_pokemon_id(get_pokemon_id(params[:id]))
+    @poke_locations = PokemonLocation.where(pokemon_id: get_pokemon_id(params[:id])).order('id ASC')
+    @poke_moves = PokemonMove.where(pokemon_id: get_pokemon_id(params[:id])).order('id ASC')
+    @evol = Evolution.where("base_poke_id = ? or evol_poke_id = ?", get_pokemon_id(params[:id]), get_pokemon_id(params[:id]))
   end
 
   private

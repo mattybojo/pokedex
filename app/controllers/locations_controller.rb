@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.friendly.find(params[:id])
-    @pokemon_location = PokemonLocation.find_all_by_location_id(get_location_id(params[:id]))
+    @pokemon_location = PokemonLocation.where(location_id: get_location_id(params[:id]))
   end
 
   private
