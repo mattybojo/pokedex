@@ -120,6 +120,23 @@ def import_from_pokemon_moves_csv
   end
 end
 
+def import_from_evolutions_csv
+  file=File.new("db/data/evolutions.csv")
+  table = CSV.parse(file, :skip_blanks=>true, :headers=>:first_row)
+  begin
+    table.each do |row|
+
+      properties = {
+          :base_poke_id => Pokemon.find_by_slug(row[0]).id,
+          :evol_poke_id => Pokemon.find_by_slug(row[1]).id,
+          :method => row[2]
+      }
+
+      evol = Evolution.create!(properties)
+    end
+  end
+end
+
 puts 'ROLES'
 YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name(role)
@@ -140,3 +157,5 @@ import_from_moves_csv()
 puts 'Finished importing Moves'
 import_from_pokemon_moves_csv
 puts 'Finished importing PokemonMoves'
+import_from_evolutions_csv
+puts 'Finished importing Evolutions'

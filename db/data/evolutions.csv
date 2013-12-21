@@ -1,0 +1,123 @@
+base_pokemon,evolution_pokemon,method
+chikorita,bayleef,Level 16
+bayleef,meganium,Level 32
+cyndaquil,quilava,Level 14
+quilava,typhlosion,Level 36
+totodile,croconaw,Level 18
+croconaw,feraligatr,Level 30
+pidgey,pidgeotto,Level 18
+pidgeotto,pidgeot,Level 36
+spearow,fearow,Level 20
+hoothoot,noctowl,Level 20
+rattata,raticate,Level 20
+sentret,furret,Level 15
+pichu,pikachu,Happiness
+pikachu,raichu,Use Thunder Stone
+caterpie,metapod,Level 7
+metapod,butterfree,Level 10
+weedle,kakuna,Level 7
+kakuna,beedrill,Level 10
+ledyba,ledian,Level 18
+spinarak,ariados,Level 22
+geodude,graveler,Level 25
+graveler,golem,Trade
+zubat,golbat,Level 22
+golbat,crobat,Happiness
+cleffa,clefairy,Happiness
+clefairy,clefable,Use Moon Stone
+igglybuff,jigglypuff,Happiness
+jigglypuff,wigglytuff,Use Moon Stone
+togepi,togetic,Happiness
+sandshrew,sandslash,Level 22
+ekans,arbok,Level 22
+mareep,flaaffy,Level 15
+flaaffy,ampharos,Level 30
+wooper,quagsire,Level 20
+gastly,haunter,Level 25
+haunter,gengar,Trade
+onix,steelix,Trade holding Metal Coat
+bellsprout,weepinbell,Level 21
+weepinbell,victreebel,Use Leaf Stone
+hoppip,skiploom,Level 18
+skiploom,jumpluff,Level 27
+paras,parasect,Level 24
+poliwag,poliwhirl,Level 25
+poliwhirl,poliwrath,Use Water Stone
+poliwhirl,politoed,Trade holding King's Rock
+magikarp,gyarados,Level 20
+goldeen,seaking,Level 33
+slowpoke,slowbro,Level 37
+slowpoke,slowking,Trade holding King's Rock
+oddish,gloom,Level 21
+gloom,vileplume,Use Leaf Stone
+gloom,bellossom,Use Sun Stone
+drowzee,hypno,Level 26
+abra,kadabra,Level 16
+kadabra,alakazam,Trade
+pineco,forretress,Level 31
+nidoran-f,nidorina,Level 16
+nidorina,nidoqueen,Use Moon Stone
+nidoran-m,nidorino,Level 16
+nidorino,nidoking,Use Moon Stone
+sunkern,sunflora,Use Sun Stone
+exeggcute,exeggutor,Use Leaf Stone
+venonat,venomoth,Level 31
+scyther,scizor,Trade holding Metal Coat
+koffing,weezing,Level 35
+grimer,muk,Level 38
+magnemite,magneton,Level 30
+voltorb,electrode,Level 30
+snubbull,granbull,Level 23
+vulpix,ninetales,Use Fire Stone
+growlithe,arcanine,Use Fire Stone
+marill,azumarill,Level 18
+diglett,dugtrio,Level 26
+mankey,primeape,Level 28
+meowth,persian,Level 28
+psyduck,golduck,Level 33
+machop,machoke,Level 28
+machoke,machamp,Trade
+tyrogue,hitmonlee,Level 20, Atk > Def
+tyrogue,hitmonchan,Level 20, Atk < Def
+tyrogue,hitmontop,Level 20, Atk = Def
+magby,magmar,Level 30
+smoochum,jynx,Level 30
+elekid,electabuzz,Level 30
+natu,xatu,Level 25
+tentacool,tentacruel,Level 30
+krabby,kingler,Level 28
+staryu,starmie,Use Water Stone
+shellder,cloyster,Use Water Stone
+remoraid,octillery,Level 25
+chinchou,lanturn,Level 27
+seel,dewgong,Level 34
+eevee,vaporeon,Use Water Stone
+eevee,jolteon,Use Thunder Stone
+eevee,flareon,Use Fire Stone
+eevee,espeon,Happiness, Daytime
+eevee,umbreon,Happiness, Nighttime
+horsea,seadra,Level 32
+seadra,kingdra,Trade holding Dragon Scale
+swinub,piloswine,Level 33
+teddiursa,ursaring,Level 30
+phanpy,donphan,Level 25
+doduo,dodrio,Level 31
+ponyta,rapidash,Level 40
+cubone,marowak,Level 28
+rhyhorn,rhydon,Level 42
+houndour,houndoom,Level 24
+slugma,magcargo,Level 38
+porygon,porygon2,Trade holding Up-Grade
+chansey,blissey,Happiness
+omanyte,omastar,Level 40
+kabuto,kabutops,Level 40
+bulbasaur,ivysaur,Level 16
+ivysaur,venusaur,Level 32
+charmander,charmeleon,Level 16
+charmeleon,charizard,Level 36
+squirtle,wartortle,Level 16
+wartortle,blastoise,Level 36
+dratini,dragonair,Level 30
+dragonair,dragonite,Level 55
+larvitar,pupitar,Level 30
+pupitar,tyranitar,Level 55

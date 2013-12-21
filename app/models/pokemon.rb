@@ -18,6 +18,7 @@ class Pokemon < ActiveRecord::Base
   has_many :pokemon_locations
   has_many :moves, :through => :pokemon_moves
   has_many :pokemon_moves
+  has_many :evolutions
 
   def should_generate_new_friendly_id?
     new_record?

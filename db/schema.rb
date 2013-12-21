@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219090922) do
+ActiveRecord::Schema.define(version: 20131219220546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "evolutions", force: true do |t|
+    t.integer "base_poke_id"
+    t.integer "evol_poke_id"
+    t.string  "method"
+  end
 
   create_table "locations", force: true do |t|
     t.string "name"
