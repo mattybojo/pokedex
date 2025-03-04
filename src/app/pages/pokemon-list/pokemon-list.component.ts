@@ -18,10 +18,5 @@ export class PokemonListComponent {
   // DI
   public pokeApi = inject(PokeApiService);
 
-  constructor() {
-    effect(() => {
-      console.log('version', this.pokeApi.selectedVersion());
-      console.log('version group', this.pokeApi.selectedVersionGroup());
-    });
-  }
+  constructor() { }
 }

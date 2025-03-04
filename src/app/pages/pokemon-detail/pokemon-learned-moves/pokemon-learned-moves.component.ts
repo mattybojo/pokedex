@@ -67,7 +67,7 @@ export class PokemonLearnedMovesComponent {
                 this.miscMoves.push({ move: move.move, detail: [detail] });
                 break;
               default:
-                console.log('Unknown move learn method.');
+                console.error('Unknown move learn method.');
             }
           };
         };

@@ -37,7 +37,6 @@ export class PokemonEvolutionComponent implements AfterViewInit {
 
     effect(() => {
       if (this.pokeApi.evolutionChain() && this.pokeApi.pokemonList().length > 0) {
-        console.log(this.pokeApi.evolutionChain());
         // Init mermaid diagram
         this.mermaidDiagram = [];
 
@@ -132,7 +131,7 @@ export class PokemonEvolutionComponent implements AfterViewInit {
         linkText = 'Trade';
         break
       default:
-        console.error(evoDetails);
+        console.error(`Unknown evolution trigger: ${evoDetails.trigger.name}`);
     }
     return `\n${getNameFromObject(pokemon.species.names)}-- ${linkText} ---${getNameFromObject(nextEvo.species.names)}`;
   }

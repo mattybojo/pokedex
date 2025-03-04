@@ -33,7 +33,6 @@ export class HeaderComponent implements AfterViewInit {
           return { key: v.name, value: v.name };
         }
       });
-      console.log(this.versionList);
     });
   }
   ngAfterViewInit(): void {
