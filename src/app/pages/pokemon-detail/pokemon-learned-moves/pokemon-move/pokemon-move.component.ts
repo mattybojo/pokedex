@@ -38,7 +38,6 @@ export class PokemonMoveComponent implements OnInit {
       newVersionGroup = await this.pokeApi.getVersionGroupDetails(getIdFromUrl(flavorTextEntries[i].version_group.url)!);
       if (currentGenNum <= romanToInt(getGenerationNumber(newVersionGroup.generation.name))) {
         this.flavorText = flavorTextEntries[i];
-        console.log(this.flavorText);
         break;
       }
     }
