@@ -4,7 +4,7 @@ import { MoveFlavorTextEntry, VersionGroup } from 'pokeapi-js-wrapper';
 import { CardModule } from 'primeng/card';
 import { TooltipModule } from 'primeng/tooltip';
 import { MoveDetail } from '../../../../app.beans';
-import { getGenerationNumber, getIdFromUrl, getNameFromObject, pastValuesComparator, romanToInt } from '../../../../app.helpers';
+import { flavorTextComparator, getGenerationNumber, getIdFromUrl, getNameFromObject, pastValuesComparator, romanToInt } from '../../../../app.helpers';
 import { PokeApiService } from '../../../../shared/poke-api.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class PokemonMoveComponent implements OnInit {
   @Input() move!: MoveDetail;
 
   moveName: string = '';
-  flavorText: MoveFlavorTextEntry[] | undefined;
+  flavorText?: MoveFlavorTextEntry;
   learnedLevel: number | undefined;
 
   movePower?: number;
@@ -30,10 +30,19 @@ export class PokemonMoveComponent implements OnInit {
   private pokeApi = inject(PokeApiService);
 
   async ngOnInit(): Promise<void> {
-    this.flavorText = this.move.move.flavor_text_entries.filter(x => x.version_group.name === this.pokeApi.selectedVersionGroup()!.name && x.language.name === 'en');
-    if (!this.flavorText) {
-      this.move.move.flavor_text_entries.filter(x => x.language.name === 'en');
+    const currentGenNum: number = romanToInt(getGenerationNumber(this.pokeApi.selectedVersionGroup()!.generation.name));
+    let newVersionGroup: VersionGroup
+
+    const flavorTextEntries = this.move.move.flavor_text_entries.sort(flavorTextComparator).filter(x => x.language.name === 'en');
+    for (let i = 0; i < flavorTextEntries.length; i++) {
+      newVersionGroup = await this.pokeApi.getVersionGroupDetails(getIdFromUrl(flavorTextEntries[i].version_group.url)!);
+      if (currentGenNum <= romanToInt(getGenerationNumber(newVersionGroup.generation.name))) {
+        this.flavorText = flavorTextEntries[i];
+      }
     }
+
+    this.flavorText!.flavor_text = this.flavorText!.flavor_text.replaceAll('\n', ' ');
+
     this.moveName = getNameFromObject(this.move.move.names);
 
     this.pokeApi.selectedPokemon()?.details.moves[0].version_group_details
@@ -51,8 +60,6 @@ export class PokemonMoveComponent implements OnInit {
     this.move.move.past_values.sort(pastValuesComparator);
     const pastValuesArr = this.move.move.past_values;
     // Convert roman numeral of generation to number for future comparison
-    const currentGenNum: number = romanToInt(getGenerationNumber(this.pokeApi.selectedVersionGroup()!.generation.name));
-    let newVersionGroup: VersionGroup
     for (let i = 0; i < pastValuesArr.length; i++) {
       // Get the version group of this past value
       newVersionGroup = await this.pokeApi.getVersionGroupDetails(getIdFromUrl(pastValuesArr[i].version_group.url)!);

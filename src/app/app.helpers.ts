@@ -1,4 +1,4 @@
-import { LanguageName, PastType, PastValue } from 'pokeapi-js-wrapper';
+import { LanguageName, MoveFlavorTextEntry, PastType, PastValue } from 'pokeapi-js-wrapper';
 import { PokemonInfo } from './app.beans';
 
 export const getIdFromUrl = (str: string): number | null => {
@@ -55,4 +55,8 @@ export const getCurrentGenerationPokemonType = (pokemon: PokemonInfo, currentGen
   }
 
   return pokeTypes;
+}
+
+export const flavorTextComparator = (a: MoveFlavorTextEntry, b: MoveFlavorTextEntry): number => {
+  return getIdFromUrl(a.version_group.name)! - getIdFromUrl(b.version_group.name)!;
 }
