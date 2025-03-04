@@ -1,0 +1,27 @@
+<p-card
+  class="card-small"
+  styleClass="my-2 shadow-1 hover:shadow-4 cursor-pointer"
+  (click)="loadPokemonDetail(pokemon)"
+>
+  <div class="flex">
+    <img
+      [src]="pokemon.details.sprites.other['official-artwork'].front_default"
+      width="50"
+      height="50"
+    />
+    <div class="flex align-items-center ml-2">
+      <p># {{ pokemonId | number : "3.0-0" }}</p>
+      <p class="capitalize ml-2">{{ pokemon.details.name }}</p>
+      <p-chip
+        [label]="pokemonTypes[0]"
+        [styleClass]="pokemonTypes[0] + ' ml-2'"
+      ></p-chip>
+      @if (pokemonTypes.length > 1 && pokemonTypes[1]) {
+      <p-chip
+        [label]="pokemonTypes[1]"
+        [styleClass]="pokemonTypes[1] + ' ml-2'"
+      ></p-chip>
+      }
+    </div>
+  </div>
+</p-card>

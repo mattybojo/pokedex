@@ -1,0 +1,18 @@
+<div class="flex justify-content-between align-items-center p-2">
+  @if (versionList) {
+  <p-select
+    [options]="versionList"
+    [(ngModel)]="selectedVersion"
+    [checkmark]="true"
+    size="small"
+    optionLabel="value"
+    optionValue="key"
+    [showClear]="true"
+    placeholder="Select a Version"
+    [filter]="true"
+    filterBy="value"
+    (onChange)="setVersion($event)"
+  />
+  }
+  <a [routerLink]="['']" class="header-link">Pokemon</a>
+</div>

@@ -1,0 +1,107 @@
+<p-panel header="Type Matchups" [toggleable]="true" styleClass="mt-2">
+  <div class="flex flex-column">
+    <div class="flex align-items-center mb-4 mt-2">
+      <p-button
+        [rounded]="true"
+        [text]="true"
+        severity="success"
+        pTooltip="Resistances"
+        tooltipPosition="right"
+        positionTop="-15"
+        tooltipStyleClass="capitalize"
+        styleClass="mr-3 p-0"
+      >
+        <fa-icon [icon]="faCirclePlus" size="lg"></fa-icon>
+      </p-button>
+      @for(type of resistances; track type) {
+      <div class="icon mr-2" [ngClass]="type.type">
+        <p-image
+          [width]="imageSize"
+          [height]="imageSize"
+          [src]="'/images/types/' + type.type + '.svg'"
+          [pTooltip]="type.type"
+          tooltipPosition="top"
+          positionTop="-15"
+          tooltipStyleClass="capitalize"
+        >
+        </p-image>
+        <p-badge
+          value="+"
+          severity="success"
+          class="icon-badge"
+          *ngIf="0.25 === type.multiplier"
+        ></p-badge>
+      </div>
+      }
+    </div>
+
+    <div
+      class="flex align-items-center"
+      [ngClass]="immunities.length > 0 ? 'mb-4' : ''"
+    >
+      <p-button
+        [rounded]="true"
+        [text]="true"
+        severity="danger"
+        pTooltip="Weaknesses"
+        tooltipPosition="right"
+        positionTop="-15"
+        tooltipStyleClass="capitalize"
+        styleClass="mr-3 p-0"
+      >
+        <fa-icon [icon]="faCircleMinus" size="lg"></fa-icon>
+      </p-button>
+      @for(type of weaknesses; track type) {
+      <div class="icon mr-2" [ngClass]="type.type">
+        <p-image
+          [width]="imageSize"
+          [height]="imageSize"
+          [src]="'/images/types/' + type.type + '.svg'"
+          [pTooltip]="type.type"
+          tooltipPosition="top"
+          positionTop="-15"
+          tooltipStyleClass="capitalize"
+        >
+        </p-image>
+        <p-badge
+          value="+"
+          severity="danger"
+          class="icon-badge"
+          *ngIf="4 === type.multiplier"
+        ></p-badge>
+      </div>
+      }
+    </div>
+
+    @if (immunities.length > 0) {
+    <div class="flex align-items-center">
+      <p-button
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        pTooltip="Immunities"
+        tooltipPosition="right"
+        positionTop="-15"
+        tooltipStyleClass="capitalize"
+        styleClass="mr-3 p-0"
+      >
+        <fa-icon [icon]="faCircleXmark" size="lg"></fa-icon>
+      </p-button>
+      @for(type of immunities; track type) {
+      <div class="icon mr-2" [ngClass]="type.type">
+        <p-image
+          [width]="imageSize"
+          [height]="imageSize"
+          [src]="'/images/types/' + type.type + '.svg'"
+          [pTooltip]="type.type"
+          tooltipPosition="top"
+          positionTop="-15"
+          tooltipStyleClass="capitalize"
+        >
+        </p-image>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</p-panel>

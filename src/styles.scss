@@ -1,1 +1,176 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.min.css";
+
+body {
+  margin: 0;
+  background: #d7daf4;
+}
+
+p {
+  margin: 0;
+}
+
+.card-small .p-card-body {
+  padding: 0.5rem;
+}
+
+.normal {
+  background-color: #aaaa78 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #aaaa78;
+  }
+}
+
+.fire {
+  background-color: #f0812c !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #f0812c;
+  }
+}
+
+.water {
+  background-color: #6891f1 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #6891f1;
+  }
+}
+
+.grass {
+  background-color: #79c94f !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #79c94f;
+  }
+}
+
+.electric {
+  background-color: #f8d12d !important;
+  color: black !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #f8d12d;
+  }
+}
+
+.ice {
+  background-color: #99d9d9 !important;
+  color: black !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #99d9d9;
+  }
+}
+
+.fighting {
+  background-color: #c12c23 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #c12c23;
+  }
+}
+
+.poison {
+  background-color: #a23da1 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #a23da1;
+  }
+}
+
+.ground {
+  background-color: #e1c268 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #e1c268;
+  }
+}
+
+.flying {
+  background-color: #aa91f0 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #aa91f0;
+  }
+}
+
+.psychic {
+  background-color: #f85789 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #f85789;
+  }
+}
+
+.bug {
+  background-color: #a9b919 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #a9b919;
+  }
+}
+
+.rock {
+  background-color: #baa135 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #baa135;
+  }
+}
+
+.ghost {
+  background-color: #715799 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #715799;
+  }
+}
+
+.dragon {
+  background-color: #7035f8 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #7035f8;
+  }
+}
+
+.steel {
+  background-color: #b9b9d1 !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #b9b9d1;
+  }
+}
+
+.fairy {
+  background-color: #ef9aae !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #ef9aae;
+  }
+}
+
+.dark {
+  background-color: #4e3c3e !important;
+  color: white !important;
+
+  &.icon {
+    box-shadow: 0 0 20px #4e3c3e !important;
+  }
+}

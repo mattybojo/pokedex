@@ -1,0 +1,25 @@
+.icon {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  transition: 200ms all;
+  box-shadow: none !important;
+  display: inline-block;
+
+  &:hover {
+    filter: saturate(200%);
+    transform: scale(1.1);
+  }
+
+  & ::ng-deep img {
+    height: 60%;
+    width: 60%;
+    margin: 20%;
+  }
+}
+
+.icon-badge {
+  position: relative;
+  bottom: 50px;
+  left: 15px;
+}

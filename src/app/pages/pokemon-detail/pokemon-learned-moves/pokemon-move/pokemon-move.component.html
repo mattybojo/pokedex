@@ -1,0 +1,39 @@
+<p-card
+  class="card-small"
+  [styleClass]="moveType + ' mb-2 hover:shadow-4'"
+  pTooltip="{{ flavorText![0] }}"
+  tooltipPosition="top"
+>
+  <div class="flex justify-content-between">
+    <div class="flex flex-row align-items-center">
+      <p class="font-bold text-lg w-4rem">
+        @if (move.machineNumber) {
+        {{ move.machineNumber }}
+        } @else { Lv
+        {{ learnedLevel }}
+        }
+      </p>
+      <div class="flex flex-column ml-2">
+        <p class="font-bold">{{ moveName }}</p>
+        <span class="text-xs mt-1"
+          >{{ moveType | uppercase }} •
+          {{ move.move.damage_class.name | uppercase }}</span
+        >
+      </div>
+    </div>
+    <div class="flex">
+      <div class="flex flex-column align-items-center px-1 ml-2">
+        <p>{{ !!movePower ? movePower : "-" }}</p>
+        <p class="mt-1 text-xs">PWR</p>
+      </div>
+      <div class="flex flex-column align-items-center px-1 ml-2">
+        <p>{{ !!moveAccuracy ? moveAccuracy : "-" }}</p>
+        <p class="mt-1 text-xs">ACC</p>
+      </div>
+      <div class="flex flex-column align-items-center px-1 ml-2">
+        <p>{{ !!movePp ? movePp : "-" }}</p>
+        <p class="mt-1 text-xs">PP</p>
+      </div>
+    </div>
+  </div>
+</p-card>

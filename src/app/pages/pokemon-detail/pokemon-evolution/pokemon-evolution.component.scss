@@ -1,0 +1,8 @@
+div.mermaid ::ng-deep div.labelBkg {
+  background-color: transparent !important;
+}
+
+div.mermaid ::ng-deep .icon-shape p,
+div.mermaid ::ng-deep .image-shape p {
+  background-color: transparent !important;
+}

@@ -1,0 +1,50 @@
+@if (!!pokeApi.selectedPokemon()) {
+<p-panel header="General" [toggleable]="true" styleClass="text-center">
+  <img
+    [src]="
+      pokeApi.selectedPokemon()!.details.sprites.other['official-artwork']
+        .front_default
+    "
+    width="150"
+    height="150"
+  />
+  <div class="flex justify-content-between">
+    <div class="flex flex-column align-items-start">
+      <p class="capitalize font-bold text-xl">
+        {{ pokeApi.selectedPokemon()!.details.name }}
+      </p>
+      <p>{{ pokemonId | number : "3.0-0" }}</p>
+    </div>
+    <div class="flex">
+      <div class="icon" [ngClass]="pokemonTypes[0]">
+        <p-image
+          [width]="imageSize"
+          [height]="imageSize"
+          [src]="'/images/types/' + pokemonTypes[0] + '.svg'"
+          [pTooltip]="pokemonTypes[0]"
+          tooltipPosition="top"
+          positionTop="-38"
+          tooltipStyleClass="capitalize"
+        />
+      </div>
+      @if (pokemonTypes.length > 1 && pokemonTypes[1]) {
+      <div class="icon ml-2" [ngClass]="pokemonTypes[1]">
+        <p-image
+          [width]="imageSize"
+          [height]="imageSize"
+          [src]="'/images/types/' + pokemonTypes[1] + '.svg'"
+          [pTooltip]="pokemonTypes[1]"
+          tooltipPosition="top"
+          positionTop="-30"
+          tooltipStyleClass="capitalize"
+        />
+      </div>
+      }
+    </div>
+  </div>
+</p-panel>
+<pokemon-evolution></pokemon-evolution>
+<pokemon-type [pokemonTypes]="pokemonTypes"></pokemon-type>
+<pokemon-location></pokemon-location>
+<pokemon-learned-moves></pokemon-learned-moves>
+}

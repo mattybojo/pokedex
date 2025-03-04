@@ -1,0 +1,28 @@
+<p-panel header="Learned Moves" [toggleable]="true" styleClass="mt-2">
+  @for(move of levelupMoves; track move) {
+  <pokemon-move [move]="move"></pokemon-move>
+  }
+</p-panel>
+<p-panel header="HMs" [toggleable]="true" styleClass="mt-2">
+  @for(hm of hms; track hm) {
+  <pokemon-move [move]="hm"></pokemon-move>
+  }
+</p-panel>
+<p-panel header="TMs" [toggleable]="true" styleClass="mt-2">
+  @for(tm of tms; track tm) {
+  <pokemon-move [move]="tm"></pokemon-move>
+  }
+</p-panel>
+@if (eggMoves.length > 0) {
+<p-panel header="Egg Moves" [toggleable]="true" styleClass="mt-2">
+  @for(move of eggMoves; track move) {
+  <pokemon-move [move]="move"></pokemon-move>
+  }
+</p-panel>
+} @if (tutorMoves.length > 0) {
+<p-panel header="Tutor Moves" [toggleable]="true" styleClass="mt-2">
+  @for(move of tutorMoves; track move) {
+  <pokemon-move [move]="move"></pokemon-move>
+  }
+</p-panel>
+}
