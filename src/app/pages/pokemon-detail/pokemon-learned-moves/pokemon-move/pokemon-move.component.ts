@@ -38,10 +38,10 @@ export class PokemonMoveComponent implements OnInit {
       newVersionGroup = await this.pokeApi.getVersionGroupDetails(getIdFromUrl(flavorTextEntries[i].version_group.url)!);
       if (currentGenNum <= romanToInt(getGenerationNumber(newVersionGroup.generation.name))) {
         this.flavorText = flavorTextEntries[i];
+        console.log(this.flavorText);
+        break;
       }
     }
-
-    this.flavorText!.flavor_text = this.flavorText!.flavor_text.replaceAll('\n', ' ');
 
     this.moveName = getNameFromObject(this.move.move.names);
 
@@ -65,11 +65,12 @@ export class PokemonMoveComponent implements OnInit {
       newVersionGroup = await this.pokeApi.getVersionGroupDetails(getIdFromUrl(pastValuesArr[i].version_group.url)!);
       // Check if the currently selected generation is before the pastValues generation
       // If the currently selected version groups' generation is before the pastValues generation, use those values to update the move's details
-      if (currentGenNum < romanToInt(getGenerationNumber(newVersionGroup.generation.name))) {
+      if (currentGenNum <= romanToInt(getGenerationNumber(newVersionGroup.generation.name))) {
         this.movePower = pastValuesArr[i].power != null ? pastValuesArr[i].power! : this.movePower;
         this.moveAccuracy = pastValuesArr[i].accuracy != null ? pastValuesArr[i].accuracy! : this.moveAccuracy;
         this.movePp = pastValuesArr[i].pp != null ? pastValuesArr[i].pp! : this.movePp;
         this.moveType = pastValuesArr[i].type?.name != null ? pastValuesArr[i].type!.name! : this.moveType;
+        break;
       } else {
         break;
       }

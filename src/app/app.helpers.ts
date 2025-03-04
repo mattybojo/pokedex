@@ -44,11 +44,10 @@ export const getCurrentGenerationPokemonType = (pokemon: PokemonInfo, currentGen
   // Convert roman numeral of generation to number for future comparison
   const currentGenNum: number = romanToInt(getGenerationNumber(currentGeneration));
 
-  for (const pastType of pokemon.details.past_types) {
-    // Check if the currently selected generation is before the pastValues generation
-    // If the currently selected version groups' generation is before the pastValues generation, use those values to update the move's details
-    if (currentGenNum < romanToInt(getGenerationNumber(pastType.generation.name))) {
-      pokeTypes = pastType.types.map(x => x.type.name);
+  for (let i = 0; i < pokemon.details.past_types.length; i++) {
+    if (currentGenNum <= romanToInt(getGenerationNumber(pokemon.details.past_types[i].generation.name))) {
+      pokeTypes = pokemon.details.past_types[i].types.map(x => x.type.name);
+      break;
     } else {
       break;
     }

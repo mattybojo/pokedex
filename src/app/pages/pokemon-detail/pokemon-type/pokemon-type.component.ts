@@ -46,14 +46,14 @@ export class PokemonTypeComponent implements OnInit {
     this.pokeApi.getPokemonTypeDetails(this.pokemonTypes).then(types => {
       const currentGenNum: number = romanToInt(getGenerationNumber(this.pokeApi.selectedVersionGroup()!.generation.name));
       types.forEach(type => {
-
         // Check for past types here
         typeDmgRelations = type.damage_relations;
-        type.past_damage_relations.forEach(pastRel => {
-          if (currentGenNum <= romanToInt(getGenerationNumber(pastRel.generation.name))) {
-            typeDmgRelations = pastRel.damage_relations;
+        for (let i = 0; i < type.past_damage_relations.length; i++) {
+          if (currentGenNum <= romanToInt(getGenerationNumber(type.past_damage_relations[i].generation.name))) {
+            typeDmgRelations = type.past_damage_relations[i].damage_relations;
+            break;
           }
-        });
+        }
 
         if (!dmgRelations) {
           dmgRelations = typeDmgRelations;
