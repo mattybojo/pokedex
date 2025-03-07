@@ -1,10 +1,10 @@
 import { capitalize } from 'lodash-es';
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, Input } from '@angular/core';
 import { FluffyEncounterDetail, LocationArea } from 'pokeapi-js-wrapper';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { PokemonEncounterLocation } from '../../../app.beans';
-import { getIdFromUrl, getNameFromObject } from '../../../app.helpers';
+import { getEncounterLevel, getIdFromUrl, getNameFromObject } from '../../../app.helpers';
 import { PokeApiService } from '../../../shared/poke-api.service';
 
 @Component({
@@ -15,6 +15,8 @@ import { PokeApiService } from '../../../shared/poke-api.service';
   standalone: true
 })
 export class PokemonLocationComponent {
+
+  @Input() pokemonName!: string;
 
   encounterInfo: PokemonEncounterLocation[] = [];
 
@@ -32,11 +34,12 @@ export class PokemonLocationComponent {
               v.encounter_details.forEach(ed => {
                 this.encounterInfo.push({
                   locationName: getNameFromObject(area.names)!,
-                  levelString: this.getEncounterLevel(ed),
+                  levelString: getEncounterLevel(ed),
                   level: ed.min_level,
                   method: `${capitalize(ed.method.name.replaceAll('-', ' '))}`,
                   pctChance: `${ed.chance}%`,
-                  conditionValues: ed.condition_values
+                  conditionValues: ed.condition_values,
+                  pokemonName: this.pokemonName
                 });
               });
             });
@@ -44,13 +47,5 @@ export class PokemonLocationComponent {
         };
       }
     });
-  }
-
-  private getEncounterLevel(encounter: FluffyEncounterDetail): string {
-    if (encounter.min_level === encounter.max_level) {
-      return `Level ${encounter.min_level}`
-    } else {
-      return `Level ${encounter.min_level} - ${encounter.max_level}`
-    }
   }
 }

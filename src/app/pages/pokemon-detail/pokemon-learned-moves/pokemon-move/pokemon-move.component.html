@@ -1,7 +1,7 @@
 <p-card
   class="card-small"
-  [styleClass]="moveType + ' mb-2 hover:shadow-4'"
-  pTooltip="{{ flavorText?.flavor_text }}"
+  [styleClass]="move.move.type.name + ' mb-2 hover:shadow-4'"
+  pTooltip="{{ move.move.flavor_text_entries[0].flavor_text }}"
   tooltipPosition="top"
 >
   <div class="flex justify-content-between">
@@ -10,28 +10,28 @@
         @if (move.machineNumber) {
         {{ move.machineNumber }}
         } @else { Lv
-        {{ learnedLevel }}
+        {{ move.detail[0].level_learned_at }}
         }
       </p>
       <div class="flex flex-column ml-2">
-        <p class="font-bold">{{ moveName }}</p>
+        <p class="font-bold">{{ move.move.names[0].name }}</p>
         <span class="text-xs mt-1"
-          >{{ moveType | uppercase }} •
+          >{{ move.move.type.name | uppercase }} •
           {{ move.move.damage_class.name | uppercase }}</span
         >
       </div>
     </div>
     <div class="flex">
       <div class="flex flex-column align-items-center px-1 ml-2">
-        <p>{{ !!movePower ? movePower : "-" }}</p>
+        <p>{{ !!move.move.power ? move.move.power : "-" }}</p>
         <p class="mt-1 text-xs">PWR</p>
       </div>
       <div class="flex flex-column align-items-center px-1 ml-2">
-        <p>{{ !!moveAccuracy ? moveAccuracy : "-" }}</p>
+        <p>{{ !!move.move.accuracy ? move.move.accuracy : "-" }}</p>
         <p class="mt-1 text-xs">ACC</p>
       </div>
       <div class="flex flex-column align-items-center px-1 ml-2">
-        <p>{{ !!movePp ? movePp : "-" }}</p>
+        <p>{{ !!move.move.pp ? move.move.pp : "-" }}</p>
         <p class="mt-1 text-xs">PP</p>
       </div>
     </div>

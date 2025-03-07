@@ -1,5 +1,4 @@
-import { LanguageName, MoveFlavorTextEntry, PastType, PastValue } from 'pokeapi-js-wrapper';
-import { PokemonInfo } from './app.beans';
+import { FluffyEncounterDetail, LanguageName, MoveFlavorTextEntry, PurpleEncounterDetail } from 'pokeapi-js-wrapper';
 
 export const getIdFromUrl = (str: string): number | null => {
   let results: RegExpMatchArray | null = str.match(/\d+/g);
@@ -12,10 +11,6 @@ export const getNameFromObject = (languageArray: LanguageName[]): string => {
 
 export const sleep = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-export const pastValuesComparator = (a: PastValue, b: PastValue): number => {
-  return getIdFromUrl(a.version_group.url)! - getIdFromUrl(b.version_group.url)!;
 }
 
 export const getGenerationNumber = (genStr: string): string => {
@@ -33,29 +28,14 @@ export const romanToInt = (str: string): number => {
   return num;
 };
 
-export const pastTypesComparator = (a: PastType, b: PastType): number => {
-  return romanToInt(a.generation.name) - romanToInt(b.generation.name);
-}
-
-export const getCurrentGenerationPokemonType = (pokemon: PokemonInfo, currentGeneration: string): string[] => {
-  let pokeTypes: string[] = pokemon.details.types.map(x => x.type.name);
-  // Sort past values array by generation using comparator
-  pokemon.details.past_types.sort(pastTypesComparator);
-  // Convert roman numeral of generation to number for future comparison
-  const currentGenNum: number = romanToInt(getGenerationNumber(currentGeneration));
-
-  for (let i = 0; i < pokemon.details.past_types.length; i++) {
-    if (currentGenNum <= romanToInt(getGenerationNumber(pokemon.details.past_types[i].generation.name))) {
-      pokeTypes = pokemon.details.past_types[i].types.map(x => x.type.name);
-      break;
-    } else {
-      break;
-    }
-  }
-
-  return pokeTypes;
-}
-
 export const flavorTextComparator = (a: MoveFlavorTextEntry, b: MoveFlavorTextEntry): number => {
   return getIdFromUrl(a.version_group.name)! - getIdFromUrl(b.version_group.name)!;
+}
+
+export const getEncounterLevel = (encounter: FluffyEncounterDetail | PurpleEncounterDetail): string => {
+  if (encounter.min_level === encounter.max_level) {
+    return `Level ${encounter.min_level}`
+  } else {
+    return `Level ${encounter.min_level} - ${encounter.max_level}`
+  }
 }

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleMinus, faCirclePlus, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { orderBy } from 'lodash-es';
-import { NamedAPIResource, TypeDamageRelations } from 'pokeapi-js-wrapper';
+import { isEmpty, orderBy } from 'lodash-es';
+import { NamedAPIResource, PokemonType, TypeDamageRelations } from 'pokeapi-js-wrapper';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
@@ -21,7 +21,7 @@ import { PokeApiService } from '../../../shared/poke-api.service';
   standalone: true
 })
 export class PokemonTypeComponent implements OnInit {
-  @Input() pokemonTypes: string[] = [];
+  @Input() pokemonTypes: PokemonType[] = [];
 
   weaknesses: DamageTypeMultiplier[] = [];
   resistances: DamageTypeMultiplier[] = [];
@@ -40,27 +40,14 @@ export class PokemonTypeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let typeDmgRelations: TypeDamageRelations;
     let dmgRelations: TypeDamageRelations;
     let typeMatchups: DamageTypeMultiplier[] = [];
     this.pokeApi.getPokemonTypeDetails(this.pokemonTypes).then(types => {
-      const currentGenNum: number = romanToInt(getGenerationNumber(this.pokeApi.selectedVersionGroup()!.generation.name));
-      types.forEach(type => {
-        // Check for past types here
-        typeDmgRelations = type.damage_relations;
-        for (let i = 0; i < type.past_damage_relations.length; i++) {
-          if (currentGenNum <= romanToInt(getGenerationNumber(type.past_damage_relations[i].generation.name))) {
-            typeDmgRelations = type.past_damage_relations[i].damage_relations;
-            break;
-          }
-        }
+      dmgRelations = types[0].damage_relations;
 
-        if (!dmgRelations) {
-          dmgRelations = typeDmgRelations;
-        } else {
-          Object.keys(typeDmgRelations).forEach(key => dmgRelations![key].push(...typeDmgRelations[key]));
-        }
-      });
+      if (types.length > 1 && !isEmpty(types[1])) {
+        Object.keys(dmgRelations).forEach(key => dmgRelations![key].push(...types[1].damage_relations[key]));
+      }
 
       typeMatchups = this.calculateTypeMatchup(dmgRelations.double_damage_from, 2, typeMatchups);
       typeMatchups = this.calculateTypeMatchup(dmgRelations.half_damage_from, 0.5, typeMatchups);

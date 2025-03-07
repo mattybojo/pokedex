@@ -4,12 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ImageModule } from 'primeng/image';
 import { PanelModule } from 'primeng/panel';
 import { TooltipModule } from 'primeng/tooltip';
-import { getCurrentGenerationPokemonType } from '../../app.helpers';
 import { PokeApiService } from '../../shared/poke-api.service';
 import { PokemonEvolutionComponent } from './pokemon-evolution/pokemon-evolution.component';
 import { PokemonLearnedMovesComponent } from "./pokemon-learned-moves/pokemon-learned-moves.component";
 import { PokemonLocationComponent } from "./pokemon-location/pokemon-location.component";
 import { PokemonTypeComponent } from './pokemon-type/pokemon-type.component';
+import { PokemonInfo } from '../../app.beans';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -22,8 +22,7 @@ export class PokemonDetailComponent implements OnDestroy {
 
   imageSize: string = '50';
   pokemonId: number;
-
-  pokemonTypes: string[] = [];
+  pokemon!: PokemonInfo;
 
   // DI
   public pokeApi = inject(PokeApiService);
@@ -39,7 +38,8 @@ export class PokemonDetailComponent implements OnDestroy {
 
     effect(() => {
       if (this.pokeApi.selectedPokemon()) {
-        this.pokemonTypes = getCurrentGenerationPokemonType(this.pokeApi.selectedPokemon()!, this.pokeApi.selectedVersionGroup()!.generation.name);
+        this.pokemon = this.pokeApi.selectedPokemon()!;
+        console.log(this.pokemon);
       }
     });
   }

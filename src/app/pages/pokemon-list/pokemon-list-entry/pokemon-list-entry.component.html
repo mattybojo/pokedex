@@ -10,16 +10,20 @@
       height="50"
     />
     <div class="flex align-items-center ml-2">
-      <p># {{ pokemonId | number : "3.0-0" }}</p>
+      <p>
+        #
+        {{ pokemon.species.pokedex_numbers[0].entry_number | number : "3.0-0" }}
+      </p>
       <p class="capitalize ml-2">{{ pokemon.details.name }}</p>
       <p-chip
-        [label]="pokemonTypes[0]"
-        [styleClass]="pokemonTypes[0] + ' ml-2'"
+        [label]="pokemon.details.types[0].type.name"
+        [styleClass]="pokemon.details.types[0].type.name + ' ml-2'"
       ></p-chip>
-      @if (pokemonTypes.length > 1 && pokemonTypes[1]) {
+      @if (pokemon.details.types.length > 1 &&
+      pokemon.details.types[1].type.name) {
       <p-chip
-        [label]="pokemonTypes[1]"
-        [styleClass]="pokemonTypes[1] + ' ml-2'"
+        [label]="pokemon.details.types[1].type.name"
+        [styleClass]="pokemon.details.types[1].type.name + ' ml-2'"
       ></p-chip>
       }
     </div>
