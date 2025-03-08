@@ -1,0 +1,49 @@
+<p-card class="pokemon-filter-card" styleClass="my-2">
+  <p-floatlabel variant="on">
+    <input
+      pInputText
+      id="on_label"
+      autocomplete="off"
+      (keyup)="onFilterPokemon(filterInput.value)"
+      #filterInput
+    />
+    <label for="on_label">Filter Pokemon By Name</label>
+  </p-floatlabel>
+</p-card>
+@for (regionalLocation of filteredLocations; track regionalLocations) {
+<p-card styleClass="my-2">
+  <h2 class="text-center my-0">{{ regionalLocation.region }}</h2>
+</p-card>
+@for(location of regionalLocation.location; track location) {
+<p-accordion>
+  <p-accordion-panel class="my-2">
+    <p-accordion-header>{{ location.name }}</p-accordion-header>
+    <p-accordion-content>
+      <p-table [value]="location.encounters" sortField="level" [sortOrder]="1">
+        <ng-template #header>
+          <tr>
+            <th pSortableColumn="pokemonName">
+              Location <p-sortIcon field="pokemonName" />
+            </th>
+            <th pSortableColumn="method">
+              Encounter Method <p-sortIcon field="method" />
+            </th>
+            <th pSortableColumn="level">Level <p-sortIcon field="level" /></th>
+            <th pSortableColumn="pctChance">
+              Pct Chance <p-sortIcon field="pctChance" />
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-entry>
+          <tr>
+            <td>{{ entry.pokemonName | titlecase }}</td>
+            <td>{{ entry.method | titlecase }}</td>
+            <td>{{ entry.levelString }}</td>
+            <td>{{ entry.pctChance }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-accordion-content>
+  </p-accordion-panel>
+</p-accordion>
+} }

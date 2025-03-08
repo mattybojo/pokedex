@@ -1,4 +1,4 @@
-import { Move, NamedAPIResource, Pokemon, PokemonSpecies, TypeDamageRelations, VersionGroupDetail } from 'pokeapi-js-wrapper';
+import { Move, NamedAPIResource, Pokemon, PokemonSpecies, VersionGroupDetail } from 'pokeapi-js-wrapper';
 
 export interface VersionLookup {
   key: string;
@@ -10,13 +10,14 @@ export interface PokemonInfo {
   species: PokemonSpecies;
 }
 
-export interface PokemonEncounterLocation {
+export interface PokemonEncounterDetails {
   locationName: string;
   method: string;
   pctChance: string;
   levelString: string;
   level: number;
   conditionValues: NamedAPIResource[];
+  pokemonName?: string;
 }
 
 export interface MoveDetail {
@@ -36,3 +37,13 @@ export interface DamageTypeMultiplier {
 }
 
 export type DamageMultiplier = 4 | 2 | 0 | 0.5 | 0.25;
+
+export interface PokemonRegionalLocations {
+  region: string;
+  location: PokemonLocationArea[];
+}
+
+export interface PokemonLocationArea {
+  name: string;
+  encounters: PokemonEncounterDetails[];
+}

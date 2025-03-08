@@ -1,9 +1,9 @@
-import { capitalize } from 'lodash-es';
 import { Component, effect, inject, Input } from '@angular/core';
-import { FluffyEncounterDetail, LocationArea } from 'pokeapi-js-wrapper';
+import { capitalize } from 'lodash-es';
+import { LocationArea } from 'pokeapi-js-wrapper';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
-import { PokemonEncounterLocation } from '../../../app.beans';
+import { PokemonEncounterDetails } from '../../../app.beans';
 import { getEncounterLevel, getIdFromUrl, getNameFromObject } from '../../../app.helpers';
 import { PokeApiService } from '../../../shared/poke-api.service';
 
@@ -18,7 +18,7 @@ export class PokemonLocationComponent {
 
   @Input() pokemonName!: string;
 
-  encounterInfo: PokemonEncounterLocation[] = [];
+  encounterInfo: PokemonEncounterDetails[] = [];
 
   // DI
   private pokeApi = inject(PokeApiService);
@@ -38,8 +38,7 @@ export class PokemonLocationComponent {
                   level: ed.min_level,
                   method: `${capitalize(ed.method.name.replaceAll('-', ' '))}`,
                   pctChance: `${ed.chance}%`,
-                  conditionValues: ed.condition_values,
-                  pokemonName: this.pokemonName
+                  conditionValues: ed.condition_values
                 });
               });
             });

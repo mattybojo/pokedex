@@ -1,6 +1,6 @@
 import { effect, Injectable, signal } from '@angular/core';
-import { isArray, map } from 'lodash-es';
-import { EvolutionChain, Item, LocationArea, LocationAreaName, Move, MoveElement, MoveFlavorTextEntry, NamedAPIResourceList, PastDamageRelation, PastType, PastTypeType, PastValue, Pokedex, PokedexNumber, PokedexObject, PokemonEncounter, PokemonGameIndex, PokemonSpecies, PokemonSpeciesFlavorTextEntry, PokemonType, Region, Type, TypeDamageRelations, Version, VersionGroup, VersionGroupDetail } from 'pokeapi-js-wrapper';
+import { isArray, map, startCase } from 'lodash-es';
+import { EvolutionChain, Item, Location, LocationArea, LocationAreaName, LocationAreaPokemonEncounter, Move, MoveElement, MoveFlavorTextEntry, NamedAPIResourceList, PastDamageRelation, PastType, PastTypeType, PastValue, Pokedex, PokedexNumber, PokedexObject, PokemonEncounter, PokemonGameIndex, PokemonSpecies, PokemonSpeciesFlavorTextEntry, PokemonType, Region, Type, TypeDamageRelations, Version, VersionGroup, VersionGroupDetail } from 'pokeapi-js-wrapper';
 import { environment } from '../../environments/environment';
 import { MoveDetail, PokemonInfo } from '../app.beans';
 import { getGenerationNumber, getIdFromUrl, romanToInt } from './../app.helpers';
@@ -26,6 +26,8 @@ export class PokeApiService {
 
   // Location area information
   public selectedRegions = signal<Region[]>([]);
+  public locationList = signal<Location[]>([]);
+  public locationAreaList = signal<LocationArea[]>([]);
 
   constructor() {
     this.PokeApi = new Pokedex({
@@ -62,6 +64,27 @@ export class PokeApiService {
         this.getEvolutionChain(getIdFromUrl(this.selectedPokemon()!.species.evolution_chain.url)!);
         this.getEncounterLocations(getIdFromUrl(this.selectedPokemon()!.details.location_area_encounters)!);
         this.getLearnedMoves();
+      }
+    });
+
+    // Get the locations based on the regions in the selected version of the game
+    effect(() => {
+      if (this.selectedRegions().length > 0) {
+        let locationIds: number[] = [];
+        for (const region of this.selectedRegions()) {
+          locationIds.push(...region.locations.map(x => getIdFromUrl(x.url)!));
+        }
+        this.getLocations(locationIds);
+      }
+    });
+
+    effect(() => {
+      if (this.locationList().length > 0) {
+        let locationAreaIds: number[] = [];
+        for (const location of this.locationList()) {
+          location.areas.forEach(a => locationAreaIds.push(getIdFromUrl(a.url)!))
+        }
+        this.getLocationAreas(locationAreaIds);
       }
     });
   }
@@ -135,6 +158,7 @@ export class PokeApiService {
         });
         Promise.all(modifiedMoves).then(x => this.learnedMoves.set(x));
       });
+
   }
 
   getRegions(name: string[] | number[]): void {
@@ -145,31 +169,53 @@ export class PokeApiService {
     });
   }
 
+  // TODO: Check if filter/map functions needed
+  getLocations(name: string[] | number[]): void {
+    this.PokeApi.getLocationByName(name).then(l => this.locationList.set(l));
+  }
+
+  getLocationAreas(name: string[] | number[]): void {
+    this.PokeApi.getLocationAreaByName(name).then(la => {
+      this.locationAreaList.set(la.map(x => {
+        return {
+          ...x,
+          names: this.englishLanguageFilter(x.names, x.name),
+          pokemon_encounters: this.pokemonEncountersFilter(x.pokemon_encounters, this.selectedVersion()!.name)
+        };
+      }).filter(x => x.pokemon_encounters.length > 0).sort(this.locationAreaComparator));
+    });
+  }
+
+  // TODO: Check if filter/map functions needed
   getEncounterLocationArea(name: string | number): Promise<LocationArea> {
     return this.PokeApi.getLocationAreaByName(name);
   }
 
+  // TODO: Check if filter/map functions needed
   async getEvolutionSpecies(name: string | number): Promise<PokemonSpecies> {
     return this.PokeApi.getPokemonSpeciesByName(name);
   }
 
+  // TODO: Check if filter/map functions needed
   async getEvolutionItem(name: string | number): Promise<Item> {
     return this.PokeApi.getItemByName(name);
   }
 
+  // TODO: Check if filter/map functions needed
   async getMachineDetails(name: number) {
     return this.PokeApi.getMachineById(name);
   }
 
+  // TODO: Check if filter/map functions needed
   async getVersionGroupDetails(name: string | number): Promise<VersionGroup> {
     return this.PokeApi.getVersionGroupByName(name);
   }
 
+  // TODO: Check if filter/map functions needed
   getPokemonTypeDetails(types: PokemonType[]): Promise<Type[]> {
     return this.PokeApi.getTypeByName(types.map(x => x.type.name)).then(t => {
       const currentGenNumber = romanToInt(getGenerationNumber(this.selectedVersionGroup()!.generation.name));
       return t.map(x => {
-        console.log(x);
         return {
           ...x,
           names: this.englishLanguageFilter(x.names),
@@ -251,13 +297,27 @@ export class PokeApiService {
     return arr.filter(x => x.version.name === version);
   }
 
-  private englishLanguageFilter(arr: LocationAreaName[]): LocationAreaName[] {
-    const newArr = [...arr];
-    return newArr.filter(x => x.language.name === 'en')!
+  private pokemonEncountersFilter(arr: LocationAreaPokemonEncounter[], version: string): LocationAreaPokemonEncounter[] {
+    return arr.map(x => {
+      return { ...x, version_details: x.version_details.filter(vd => vd.version.name === version) } as LocationAreaPokemonEncounter;
+    }).filter(x => x.version_details.length > 0);
+  }
+
+  private englishLanguageFilter(arr: LocationAreaName[], locationAreaName?: string): LocationAreaName[] {
+    let newArr = arr.filter(x => x.language.name === 'en')!;
+    // If there is no english language name, use the name property to create an entry
+    if (newArr.length === 0) {
+      newArr = [{ language: { name: 'en', url: '' }, name: startCase(locationAreaName?.replaceAll('-', ' ')) }];
+    }
+    return newArr;
   };
 
   private pastTypesComparator = (a: PastType, b: PastType): number => {
     return romanToInt(a.generation.name) - romanToInt(b.generation.name);
+  }
+
+  private locationAreaComparator = (a: LocationArea, b: LocationArea): number => {
+    return a.names[0].name.localeCompare(b.names[0].name);
   }
 
   private pokemonEncounterAreaFilter(arr: PokemonEncounter[], version: string): PokemonEncounter[] {

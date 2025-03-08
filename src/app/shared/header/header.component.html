@@ -14,5 +14,8 @@
     (onChange)="setVersion($event)"
   />
   }
-  <a [routerLink]="['']" class="header-link">Pokemon</a>
+  <div>
+    <a [routerLink]="['']" class="header-link mr-2">Pokemon</a>
+    <a [routerLink]="['/locations']" class="header-link">Locations</a>
+  </div>
 </div>
