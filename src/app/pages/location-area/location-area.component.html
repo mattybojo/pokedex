@@ -4,8 +4,8 @@
       pInputText
       id="on_label"
       autocomplete="off"
-      (keyup)="onFilterPokemon(filterInput.value)"
-      #filterInput
+      [(ngModel)]="filterValue"
+      (keyup)="onFilterPokemon()"
     />
     <label for="on_label">Filter Pokemon By Name</label>
   </p-floatlabel>

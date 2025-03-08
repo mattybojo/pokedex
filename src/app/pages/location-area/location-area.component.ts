@@ -1,5 +1,6 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { capitalize } from 'lodash-es';
 import { LocationArea, LocationAreaPokemonEncounter, PokemonEncounterVersionDetail, PurpleEncounterDetail, Region } from 'pokeapi-js-wrapper';
 import { AccordionModule } from 'primeng/accordion';
@@ -13,7 +14,7 @@ import { PokeApiService } from '../../shared/poke-api.service';
 
 @Component({
   selector: 'app-location-area',
-  imports: [AccordionModule, TableModule, CardModule, InputTextModule, FloatLabel, TitleCasePipe],
+  imports: [AccordionModule, TableModule, CardModule, InputTextModule, FloatLabel, FormsModule, TitleCasePipe],
   templateUrl: './location-area.component.html',
   styleUrl: './location-area.component.scss',
   standalone: true
@@ -23,12 +24,15 @@ export class LocationAreaComponent {
   regionalLocations: PokemonRegionalLocations[] = [];
   filteredLocations: PokemonRegionalLocations[] = [];
 
+  filterValue: string = '';
+
   // DI
   private pokeApi = inject(PokeApiService);
 
   constructor() {
     effect(() => {
       if (this.pokeApi.locationAreaList().length > 0) {
+        this.filterValue = '';
         let encounterInfo: PokemonEncounterDetails[] = [];
         let pokemonLocationArea: PokemonLocationArea[] = [];
         this.regionalLocations = [];
@@ -62,14 +66,14 @@ export class LocationAreaComponent {
     });
   }
 
-  onFilterPokemon(filterValue: string): void {
+  onFilterPokemon(): void {
     this.filteredLocations = this.regionalLocations.map(x => {
       return {
         ...x,
         location: x.location.map(l => {
           return {
             ...l,
-            encounters: l.encounters.filter(e => e.pokemonName?.includes(filterValue))
+            encounters: l.encounters.filter(e => e.pokemonName?.includes(this.filterValue))
           };
         }).filter(l => l.encounters.length > 0)
       }
