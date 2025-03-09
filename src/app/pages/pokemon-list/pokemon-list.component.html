@@ -1,4 +1,6 @@
-@if (pokeApi.pokemonList().length > 0) {
+@if (appService.isLoading()) {
+<loading-spinner></loading-spinner>
+} @else if (pokeApi.pokemonList().length > 0) {
 <p-card class="pokemon-filter-card" styleClass="my-2">
   <div class="flex">
     <p-floatlabel variant="on">

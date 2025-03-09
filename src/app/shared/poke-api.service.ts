@@ -1,9 +1,10 @@
-import { effect, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { map, startCase } from 'lodash-es';
 import { EvolutionChain, Item, Location, LocationArea, LocationAreaName, LocationAreaPokemonEncounter, Move, MoveElement, MoveFlavorTextEntry, NamedAPIResourceList, PastDamageRelation, PastType, PastTypeType, PastValue, Pokedex, PokedexNumber, PokedexObject, PokemonEncounter, PokemonGameIndex, PokemonSpecies, PokemonSpeciesFlavorTextEntry, PokemonType, Region, Type, TypeDamageRelations, Version, VersionGroup, VersionGroupDetail } from 'pokeapi-js-wrapper';
 import { environment } from '../../environments/environment';
 import { MoveDetail, PokemonInfo, PokemonTypeListItem } from '../app.beans';
 import { getGenerationNumber, getIdFromUrl, romanToInt } from './../app.helpers';
+import { AppService } from '../app.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,9 @@ export class PokeApiService {
   public locationList = signal<Location[]>([]);
   public locationAreaList = signal<LocationArea[]>([]);
 
+  // DI
+  public appService = inject(AppService);
+
   constructor() {
     this.PokeApi = new Pokedex({
       cache: true,
@@ -39,6 +43,7 @@ export class PokeApiService {
     // Get the version group
     effect(() => {
       if (this.selectedVersion()) {
+        this.appService.isLoading.set(true);
         this.getVersionGroup(getIdFromUrl(this.selectedVersion()!.version_group.url)!);
       }
     });

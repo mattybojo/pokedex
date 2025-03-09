@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { isEmpty, isEqual, isEqualWith } from 'lodash-es';
 import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
 import { FloatLabel } from 'primeng/floatlabel';
@@ -7,14 +9,14 @@ import { ImageModule } from 'primeng/image';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { PokemonInfo } from '../../app.beans';
+import { AppService } from '../../app.service';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner.component';
 import { PokeApiService } from '../../shared/poke-api.service';
 import { PokemonListEntryComponent } from './pokemon-list-entry/pokemon-list-entry.component';
-import { CommonModule } from '@angular/common';
-import { isEmpty, isEqual, isEqualWith } from 'lodash-es';
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [SelectModule, CardModule, ChipModule, FloatLabel, InputTextModule, SelectModule, ImageModule, FormsModule, CommonModule, PokemonListEntryComponent],
+  imports: [SelectModule, CardModule, ChipModule, FloatLabel, InputTextModule, SelectModule, ImageModule, FormsModule, CommonModule, PokemonListEntryComponent, LoadingSpinnerComponent],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss',
   standalone: true
@@ -30,12 +32,14 @@ export class PokemonListComponent {
 
   // DI
   public pokeApi = inject(PokeApiService);
+  public appService = inject(AppService);
 
   constructor() {
     effect(() => {
       if (this.pokeApi.pokemonList().length > 0) {
         this.filteredPokemonList = this.pokeApi.pokemonList();
         this.nameFilterValue = '';
+        this.appService.isLoading.set(false);
       }
     });
   }

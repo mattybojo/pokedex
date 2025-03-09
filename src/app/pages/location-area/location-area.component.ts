@@ -10,11 +10,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { PokemonEncounterDetails, PokemonLocationArea, PokemonRegionalLocations } from '../../app.beans';
 import { getEncounterLevel, getNameFromObject } from '../../app.helpers';
+import { AppService } from '../../app.service';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner.component';
 import { PokeApiService } from '../../shared/poke-api.service';
 
 @Component({
   selector: 'app-location-area',
-  imports: [AccordionModule, TableModule, CardModule, InputTextModule, FloatLabel, FormsModule, TitleCasePipe],
+  imports: [AccordionModule, TableModule, CardModule, InputTextModule, FloatLabel, FormsModule, TitleCasePipe, LoadingSpinnerComponent],
   templateUrl: './location-area.component.html',
   styleUrl: './location-area.component.scss',
   standalone: true
@@ -28,6 +30,7 @@ export class LocationAreaComponent {
 
   // DI
   private pokeApi = inject(PokeApiService);
+  public appService = inject(AppService);
 
   constructor() {
     effect(() => {
@@ -60,8 +63,8 @@ export class LocationAreaComponent {
           this.regionalLocations.push({ region: region.names[0].name, location: pokemonLocationArea });
           pokemonLocationArea = [];
         });
-        console.log(this.regionalLocations);
         this.filteredLocations = this.regionalLocations;
+        this.appService.isLoading.set(false);
       }
     });
   }

@@ -1,3 +1,6 @@
+@if (appService.isLoading()) {
+<loading-spinner></loading-spinner>
+} @else {
 <p-card class="pokemon-filter-card" styleClass="my-2">
   <p-floatlabel variant="on">
     <input
@@ -46,4 +49,4 @@
     </p-accordion-content>
   </p-accordion-panel>
 </p-accordion>
-} }
+} } }
