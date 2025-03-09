@@ -39,7 +39,6 @@ export class PokemonDetailComponent implements OnDestroy {
     effect(() => {
       if (this.pokeApi.selectedPokemon()) {
         this.pokemon = this.pokeApi.selectedPokemon()!;
-        console.log(this.pokemon);
       }
     });
   }

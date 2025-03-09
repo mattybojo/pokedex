@@ -1,15 +1,83 @@
 @if (pokeApi.pokemonList().length > 0) {
 <p-card class="pokemon-filter-card" styleClass="my-2">
-  <p-floatlabel variant="on">
-    <input
-      pInputText
-      id="on_label"
-      autocomplete="off"
-      [(ngModel)]="filterValue"
-      (keyup)="onFilterPokemon()"
-    />
-    <label for="on_label">Filter By Name or Type</label>
-  </p-floatlabel>
+  <div class="flex">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        autocomplete="off"
+        [(ngModel)]="nameFilterValue"
+        (keyup)="onFilterPokemon()"
+      />
+      <label for="on_label">Filter By Name or Type</label>
+    </p-floatlabel>
+    <p-select
+      [(ngModel)]="typeFilterValue[0]"
+      placeholder="Select the first type"
+      [options]="pokeApi.pokemonTypesList()"
+      optionLabel="type"
+      optionValue="lowercaseType"
+      [showClear]="true"
+      [disabled]="pokeApi.pokemonTypesList().length === 0"
+      class="type-select"
+      [filter]="true"
+      filterBy="type"
+      (onChange)="onFilterPokemon()"
+      styleClass="ml-2"
+    >
+      <ng-template let-type #item>
+        <div class="flex w-full">
+          <div
+            class="icon mr-2 flex align-items-center w-full"
+            [ngClass]="type.lowercaseType"
+          >
+            <p-image
+              [width]="imageSize"
+              [height]="imageSize"
+              [src]="'/images/types/' + type.lowercaseType + '.svg'"
+              class="icon-image"
+              styleClass="ml-1 mr-2"
+            />
+            <p>{{ type.type }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-select>
+    <p-select
+      [(ngModel)]="typeFilterValue[1]"
+      placeholder="Select the second type"
+      [options]="pokeApi.pokemonTypesList()"
+      optionLabel="type"
+      optionValue="lowercaseType"
+      [showClear]="true"
+      [disabled]="
+        pokeApi.pokemonTypesList().length === 0 || !typeFilterValue[0]
+      "
+      class="type-select"
+      [filter]="true"
+      filterBy="type"
+      (onChange)="onFilterPokemon()"
+      styleClass="ml-2"
+    >
+      <ng-template let-type #item>
+        <div class="flex w-full">
+          <div
+            class="icon mr-2 flex align-items-center w-full"
+            [ngClass]="type.lowercaseType"
+          >
+            <p-image
+              [width]="imageSize"
+              [height]="imageSize"
+              [src]="'/images/types/' + type.lowercaseType + '.svg'"
+              class="icon-image"
+              styleClass="ml-1 mr-2"
+            />
+            <p>{{ type.type }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-select>
+  </div>
 </p-card>
 } @for(pokemon of filteredPokemonList; track pokemon) {
 <pokemon-list-entry [pokemon]="pokemon"></pokemon-list-entry>

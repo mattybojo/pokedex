@@ -2,7 +2,7 @@ import { effect, Injectable, signal } from '@angular/core';
 import { map, startCase } from 'lodash-es';
 import { EvolutionChain, Item, Location, LocationArea, LocationAreaName, LocationAreaPokemonEncounter, Move, MoveElement, MoveFlavorTextEntry, NamedAPIResourceList, PastDamageRelation, PastType, PastTypeType, PastValue, Pokedex, PokedexNumber, PokedexObject, PokemonEncounter, PokemonGameIndex, PokemonSpecies, PokemonSpeciesFlavorTextEntry, PokemonType, Region, Type, TypeDamageRelations, Version, VersionGroup, VersionGroupDetail } from 'pokeapi-js-wrapper';
 import { environment } from '../../environments/environment';
-import { MoveDetail, PokemonInfo } from '../app.beans';
+import { MoveDetail, PokemonInfo, PokemonTypeListItem } from '../app.beans';
 import { getGenerationNumber, getIdFromUrl, romanToInt } from './../app.helpers';
 
 @Injectable({
@@ -17,6 +17,7 @@ export class PokeApiService {
   public selectedVersionGroup = signal<VersionGroup | null>(null);
   public pokedexList = signal<PokedexObject[]>([]);
   public pokemonList = signal<PokemonInfo[]>([]);
+  public pokemonTypesList = signal<PokemonTypeListItem[]>([]);
 
   // Selected Pokemon information
   public selectedPokemon = signal<PokemonInfo | null>(null);
@@ -45,6 +46,7 @@ export class PokeApiService {
     // Get the pokedex
     effect(() => {
       if (this.selectedVersionGroup()) {
+        this.getTypesList();
         this.getRegions(this.selectedVersionGroup()!.regions.map(x => getIdFromUrl(x.url)!));
       }
     });
@@ -83,6 +85,7 @@ export class PokeApiService {
       }
     });
 
+    // Get all locations in this game, filter by ones with Pokemon encounters
     effect(() => {
       if (this.locationList().length > 0) {
         let locationAreaIds: number[] = [];
@@ -128,7 +131,6 @@ export class PokeApiService {
   getEncounterLocations(name: string | number): void {
     this.PokeApi.getPokemonEncounterAreasByName(name).then(pe => {
       this.encounterLocations.set(this.pokemonEncounterAreaFilter(pe, this.selectedVersion()!.name));
-      console.log(this.encounterLocations());
     });
   }
 
@@ -162,7 +164,6 @@ export class PokeApiService {
       this.selectedRegions.set(r.map(x => {
         return { ...x, names: this.englishLanguageFilter(x.names) } as Region;
       }));
-      console.log(this.selectedRegions());
     });
   }
 
@@ -222,7 +223,24 @@ export class PokeApiService {
     });
   }
 
+  getTypesList(): void {
+    this.PokeApi.getTypesList().then(t => {
+      this.PokeApi.getTypeByName(t.results.map(x => getIdFromUrl(x.url)!)).then(x => {
+        this.pokemonTypesList.set(this.pokemonTypesListFilter(x, romanToInt(getGenerationNumber(this.selectedVersionGroup()!.generation.name))));
+      });
+    });
+  }
+
   // Service helpers
+
+  private pokemonTypesListFilter(arr: Type[], currentGenNumber: number): PokemonTypeListItem[] {
+    return arr.filter(x => currentGenNumber >= romanToInt(getGenerationNumber(x.generation.name)) && x.pokemon.length > 0).map(x => {
+      return {
+        type: x.names.find(n => n.language.name === 'en')!.name,
+        lowercaseType: x.name
+      }
+    });
+  }
 
   private pokedexFilter(arr: PokedexObject[], versionGroup: string): PokedexObject[] {
     return arr.filter(x => x.version_groups.some(vg => vg.name === versionGroup));

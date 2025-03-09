@@ -47,3 +47,8 @@ export interface PokemonLocationArea {
   name: string;
   encounters: PokemonEncounterDetails[];
 }
+
+export interface PokemonTypeListItem {
+  type: string;
+  lowercaseType: string;
+}
